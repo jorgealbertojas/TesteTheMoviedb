@@ -22,9 +22,10 @@ import com.example.jorge.myapplication.util.EndlessRecyclerViewScrollListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
+import static com.example.jorge.myapplication.util.PathForApi.URL_IMAGE;
+import static com.example.jorge.myapplication.util.PathForApi.URL_SIZE_W154;
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
 
@@ -177,7 +178,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
     @Override
     public void showMovies(ListMovies<Movies> moviesList) {
         if (mRecyclerView.getAdapter().getItemCount() > 0) {
-            moviesList.results.addAll((List<Movies>) mListAdapter.mMovies.results);
+            moviesList.results.addAll(0,(List<Movies>) mListAdapter.mMovies.results);
         }
         mListAdapter.replaceData(moviesList);
     }
@@ -214,14 +215,10 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
         public void onBindViewHolder(ViewHolder viewHolder, int position) {
             Movies movies = mMovies.results.get(position);
 
-            int imageDimension =
-                    (int) viewHolder.moviesImage.getContext().getResources().getDimension(R.dimen.image_size);
 
             Picasso.with(viewHolder.moviesImage.getContext())
-                    .load(movies.getPosterPath())
-                    .resize(imageDimension,imageDimension)
-                    .onlyScaleDown()
-                    .centerInside()
+                    .load(URL_IMAGE + URL_SIZE_W154 + movies.getPosterPath())
+                    .fit()
                     .error(R.drawable.ic_error_black_24dp)
                     .placeholder(R.mipmap.ic_launcher)
                     .into(viewHolder.moviesImage);
@@ -233,7 +230,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
 
         public void replaceData(ListMovies<Movies> movies) {
             setList(movies);
-            notifyDataSetChanged();
+            mRecyclerView.getAdapter().notifyDataSetChanged();
         }
 
 

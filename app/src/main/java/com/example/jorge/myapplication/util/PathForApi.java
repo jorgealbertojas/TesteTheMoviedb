@@ -33,4 +33,19 @@ public class PathForApi {
      * Returns Json order Top rated
      */
     public final static String MIDLLE_TOP_RATED = "movie/top_rated";
+
+    /**
+     * URL of the image
+     */
+    public final static String URL_IMAGE = "http://image.tmdb.org/t/p/";
+
+    /**
+     * Image Small
+     */
+    public final static String URL_SIZE_W154 = "w154";
+
+    /**
+     * Image Big
+     */
+    public final static String URL_SIZE_W500 = "w500";
 }

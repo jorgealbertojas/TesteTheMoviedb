@@ -10,6 +10,7 @@ import java.util.List;
 public class MoviesServiceImpl implements MoviesServiceApi {
 
     MoviesEndpoint mRetrofit;
+    private static int page = 1;
 
     public MoviesServiceImpl(){
         mRetrofit = MoviesClient.getMovies().create(MoviesEndpoint.class);
@@ -17,7 +18,7 @@ public class MoviesServiceImpl implements MoviesServiceApi {
 
     @Override
     public void getMovies(final MoviesServiceCallback<ListMovies<Movies>> callback) {
-        Call<ListMovies<Movies>> callMovies = mRetrofit.getMoviesPOPULAR();
+        Call<ListMovies<Movies>> callMovies = mRetrofit.getMoviesPOPULAR(Integer.toString(page++));
         callMovies.enqueue(new Callback<ListMovies<Movies>>() {
             @Override
             public void onResponse(Call<ListMovies<Movies>> call, Response<ListMovies<Movies>> response) {
