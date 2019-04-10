@@ -3,6 +3,7 @@ package com.example.jorge.myapplication.detailMovies;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,12 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
 
     private DetailMoviesContract.UserActionsListener mActionsListener;
 
-    private static String mId;
-
     private ImageView mMovieImage;
     private TextView mTitle;
     private TextView mOverview;
     private TextView mReleseDate;
     private TextView mVoteAverage;
+    private TextView mOriginalLanguage;
 
 
     private static Movies mDetailMovies;
@@ -61,6 +61,9 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
         mOverview = (TextView) root.findViewById(R.id.tv_overview_detail);
         mReleseDate = (TextView) root.findViewById(R.id.tv_release_date_detail);
         mVoteAverage = (TextView) root.findViewById(R.id.tv_vote_average_detail);
+        mOriginalLanguage = (TextView) root.findViewById(R.id.tv_original_language_detail);
+
+        mOverview.setMovementMethod(new ScrollingMovementMethod());
 
 
 
@@ -81,14 +84,14 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
 
         mTitle.setText(mDetailMovies.getTitle());
         mOverview.setText(mDetailMovies.getOverview());
-        mOverview.setText(mDetailMovies.getVoteAverage());
-        mOverview.setText(mDetailMovies.getOriginal_language());
-        mOverview.setText(mDetailMovies.getReleaseDate());
+        mVoteAverage.setText(mDetailMovies.getVoteAverage());
+        mOriginalLanguage.setText(mDetailMovies.getOriginal_language());
+        mReleseDate.setText(mDetailMovies.getReleaseDate());
 
         Picasso.with(mMovieImage.getContext())
                 .load(URL_IMAGE + URL_SIZE_W500 + mDetailMovies.getPosterPath())
                 .fit()
-                .placeholder(R.mipmap.ic_launcher)
+                .error(R.drawable.ic_error_black_24dp)
                 .into(mMovieImage);
     }
 

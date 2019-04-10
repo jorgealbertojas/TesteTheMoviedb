@@ -290,6 +290,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
                 intent.putExtra(EXTRA_MOVIE, movies);
                 startActivity(intent);
 
+
             }
         }
     }

@@ -24,7 +24,6 @@
                 android:layout_marginStart="@dimen/text1_margin_left"
                 app:layout_constraintStart_toEndOf="@+id/iv_imageMovie_main"
                 android:layout_marginEnd="8dp"
-                android:text="rwerwerwrwr"
                 android:textColor="@color/textTitle1"
                 android:textSize="@dimen/text1_size" app:layout_constraintEnd_toStartOf="@+id/tv_vote_average"/>
 
