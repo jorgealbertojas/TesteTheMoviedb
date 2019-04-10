@@ -19,8 +19,11 @@ public class Movies implements Serializable {
         private float voteAverage;
         @SerializedName("release_date")
         private String releaseDate;
+        private String overview;
+        private String original_language;
 
-        public String getId() {
+
+    public String getId() {
             return Integer.toString(id);
         }
 
@@ -60,4 +63,19 @@ public class Movies implements Serializable {
             this.releaseDate = release_date;
         }
 
+        public String getOverview() {
+            return overview;
+        }
+
+        public void setOverview(String overview) {
+            this.overview = overview;
+        }
+
+    public String getOriginal_language() {
+        return original_language;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
 }

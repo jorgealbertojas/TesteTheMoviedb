@@ -1,6 +1,7 @@
 package com.example.jorge.myapplication.movies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.jorge.myapplication.R;
 import com.example.jorge.myapplication.data.source.cloud.movie.ListMovies;
 import com.example.jorge.myapplication.data.source.cloud.movie.MoviesServiceImpl;
 import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
+import com.example.jorge.myapplication.detailMovies.DetailMoviesActivity;
 import com.example.jorge.myapplication.util.EndlessRecyclerViewScrollListener;
 import com.squareup.picasso.Picasso;
 
@@ -30,6 +32,8 @@ import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
 
 public class MoviesFragment extends Fragment implements MoviesContract.View{
+
+    public static String EXTRA_MOVIE = "EXTRA_MOVIE";
 
     private MoviesAdapter mListAdapter;
     private RecyclerView mRecyclerView;
@@ -184,6 +188,11 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
     }
 
     @Override
+    public void showDetailMovies(Movies movies) {
+
+    }
+
+    @Override
     public void setPresenter(MoviesContract.UserActionsListener presenter) {
         mActionsListener = checkNotNull(presenter);
 
@@ -273,6 +282,13 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
 
             @Override
             public void onClick(View view) {
+                int position = getAdapterPosition();
+                Movies movies = getItem(position);
+                mItemListener.onMoviesClick(movies);
+
+                Intent intent = new Intent(getContext(), DetailMoviesActivity.class);
+                intent.putExtra(EXTRA_MOVIE, movies);
+                startActivity(intent);
 
             }
         }
@@ -284,7 +300,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
     ItemListener mItemListener = new ItemListener() {
         @Override
         public void onMoviesClick(Movies clickedMovie) {
-            //mActionsListener.openDetail(clickedMovie);
+            mActionsListener.loadingMovies();
         }
 
 

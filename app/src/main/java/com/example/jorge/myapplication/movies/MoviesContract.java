@@ -13,11 +13,14 @@ public class MoviesContract {
 
         void showMovies(ListMovies<Movies> moviesList);
 
+        void showDetailMovies(Movies movies);
+
     }
 
     interface UserActionsListener extends BasePresenter {
 
         void loadingMovies();
+
 
     }
 
