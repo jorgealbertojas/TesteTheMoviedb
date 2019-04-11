@@ -42,7 +42,6 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mActionsListener = new DetailMoviesPresenter(this, getContext());
     }
 
@@ -66,6 +65,15 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
         mOriginalLanguage = (TextView) root.findViewById(R.id.tv_original_language_detail);
 
         mOverview.setMovementMethod(new ScrollingMovementMethod());
+
+        ImageView back = root.findViewById(R.id.iv_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
 
 
 

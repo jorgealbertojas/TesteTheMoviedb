@@ -2,6 +2,7 @@ package com.example.jorge.myapplication.detailMovies;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 import com.example.jorge.myapplication.R;
 import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
 import com.example.jorge.myapplication.util.ActivityUtils;
@@ -14,7 +15,10 @@ public class DetailMoviesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_detail_movies);
+
 
         Movies moviesDetail = (Movies) getIntent().getExtras().getSerializable(EXTRA_MOVIE);
 
@@ -36,4 +40,5 @@ public class DetailMoviesActivity extends AppCompatActivity {
                     getSupportFragmentManager(), detailMoviesFragment, R.id.fl_detail_movies);
         }
     }
+
 }

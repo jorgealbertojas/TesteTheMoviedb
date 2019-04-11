@@ -11,19 +11,13 @@
             android:layout_height="match_parent">
         <ImageView
                 android:id="@+id/iv_imageMovie_detail"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginStart="0dp"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
                 android:transitionName="imageMovie"
-                android:layout_marginBottom="@dimen/image_margin_top_bottom"
                 android:scaleType="centerCrop"
                 app:srcCompat="@android:color/darker_gray"
-                app:layout_constraintDimensionRatio="H,16:12"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_chainStyle="spread_inside"/>
 
         <TextView
@@ -36,12 +30,12 @@
                 android:paddingRight="@dimen/title1_right_and_left_padding"
                 android:paddingLeft="@dimen/title1_right_and_left_padding"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintTop_toBottomOf="@+id/iv_imageMovie_detail"/>
+                app:layout_constraintStart_toEndOf="@+id/iv_imageMovie_detail" android:layout_marginStart="8dp"/>
 
         <TextView
                 android:id="@+id/tv_overview_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:scrollbars="vertical"
                 android:textSize="@dimen/title2_text"
                 android:paddingBottom="@dimen/title2_bottom_padding"
@@ -49,32 +43,28 @@
                 android:paddingLeft="@dimen/title2_right_and_left_padding"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Title_detail" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_original_language_detail"/>
+                app:layout_constraintBottom_toTopOf="@+id/tv_release_date_detail" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_imageMovie_detail"/>
 
         <TextView
                 android:id="@+id/tv_original_language_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text2_margin_start"
                 android:gravity="bottom"
-                android:layout_marginStart="@dimen/text2_margin_start"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="@dimen/title2_text"
-                app:layout_constraintBottom_toTopOf="@+id/tv_release_date_detail"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
                 android:id="@+id/tv_release_date_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/text2_margin_start"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toTopOf="@+id/tv_original_language_detail" android:id="@+id/linearLayout"/>
+                android:layout_marginBottom="@dimen/text3_margin_end"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_overview_detail" android:layout_marginStart="8dp"/>"
+               />
 
         <TextView
                 android:id="@+id/tv_vote_average_detail"
