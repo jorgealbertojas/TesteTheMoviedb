@@ -12,6 +12,8 @@ import com.example.jorge.myapplication.R;
 import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
 import com.squareup.picasso.Picasso;
 
+import static com.example.jorge.myapplication.util.Common.getFormatOriginalLanguage;
+import static com.example.jorge.myapplication.util.Common.getFormatVoteAverage;
 import static com.example.jorge.myapplication.util.PathForApi.URL_IMAGE;
 import static com.example.jorge.myapplication.util.PathForApi.URL_SIZE_W500;
 
@@ -84,13 +86,20 @@ public class DetailMoviesFragment extends Fragment implements DetailMoviesContra
 
         mTitle.setText(mDetailMovies.getTitle());
         mOverview.setText(mDetailMovies.getOverview());
-        mVoteAverage.setText(mDetailMovies.getVoteAverage());
-        mOriginalLanguage.setText(mDetailMovies.getOriginal_language());
+        mVoteAverage.setText(getFormatVoteAverage(getContext(),mDetailMovies.getVoteAverage()));
+        mOriginalLanguage.setText(getFormatOriginalLanguage(getContext(),mDetailMovies.getOriginal_language()));
         mReleseDate.setText(mDetailMovies.getReleaseDate());
+
+        int imageDimension =
+                (int) mMovieImage.getContext().getResources().getDimension(R.dimen.card_height);
+
+        int imageWight =
+                (int) mMovieImage.getContext().getResources().getDimension(R.dimen.image_wight);
 
         Picasso.with(mMovieImage.getContext())
                 .load(URL_IMAGE + URL_SIZE_W500 + mDetailMovies.getPosterPath())
-                .fit()
+                .resize(imageWight,imageDimension)
+                .onlyScaleDown()
                 .error(R.drawable.ic_error_black_24dp)
                 .into(mMovieImage);
     }

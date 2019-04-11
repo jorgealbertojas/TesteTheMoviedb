@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Movies</string>
+
+    <string name="string_original_language">Idioma original:</string>
+    <string name="string_voteAverage">Avaliação dos usuários:</string>
+    <string name="string_voteAverage_complement">%</string>
 </resources>

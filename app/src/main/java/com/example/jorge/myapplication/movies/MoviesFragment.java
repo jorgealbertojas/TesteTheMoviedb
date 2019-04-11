@@ -224,10 +224,16 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
         public void onBindViewHolder(ViewHolder viewHolder, int position) {
             Movies movies = mMovies.results.get(position);
 
+            int imageDimension =
+                    (int) viewHolder.moviesImage.getContext().getResources().getDimension(R.dimen.card_height);
+
+            int imageWight =
+                    (int) viewHolder.moviesImage.getContext().getResources().getDimension(R.dimen.image_wight);
 
             Picasso.with(viewHolder.moviesImage.getContext())
                     .load(URL_IMAGE + URL_SIZE_W154 + movies.getPosterPath())
-                    .fit()
+                    .resize(imageWight,imageDimension)
+                    .onlyScaleDown()
                     .error(R.drawable.ic_error_black_24dp)
                     .placeholder(R.mipmap.ic_launcher)
                     .into(viewHolder.moviesImage);

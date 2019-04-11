@@ -20,7 +20,7 @@
                 android:layout_marginBottom="@dimen/image_margin_top_bottom"
                 android:scaleType="centerCrop"
                 app:srcCompat="@android:color/darker_gray"
-                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintDimensionRatio="H,16:12"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

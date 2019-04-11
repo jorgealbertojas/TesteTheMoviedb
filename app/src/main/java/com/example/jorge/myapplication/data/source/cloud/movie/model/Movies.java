@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import static com.example.jorge.myapplication.util.Common.formatDate;
+
 /**
  * Model for get API Movies with this field
  */
@@ -56,7 +58,11 @@ public class Movies implements Serializable {
         }
 
         public String getReleaseDate() {
-            return releaseDate;
+            if (releaseDate != null){
+                return formatDate(releaseDate);
+            }else {
+                return releaseDate;
+            }
         }
 
         public void setReleaseDate(String release_date) {
