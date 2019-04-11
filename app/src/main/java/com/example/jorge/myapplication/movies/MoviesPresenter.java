@@ -1,7 +1,6 @@
 package com.example.jorge.myapplication.movies;
 
-import android.app.Activity;
-import android.support.annotation.NonNull;
+
 import com.example.jorge.myapplication.data.source.cloud.movie.ListMovies;
 import com.example.jorge.myapplication.data.source.cloud.movie.MoviesServiceApi;
 import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
@@ -17,6 +16,7 @@ public class MoviesPresenter implements MoviesContract.UserActionsListener {
         this.mMoviesServiceApi = mCarsServiceApi;
     }
 
+
     /**
      * Loading the car call Service Api with data
      */
@@ -24,11 +24,11 @@ public class MoviesPresenter implements MoviesContract.UserActionsListener {
     public void loadingMovies(Boolean popular) {
         mMoviesContractView.setLoading(true);
         mMoviesServiceApi.getMovies(new MoviesServiceApi.MoviesServiceCallback<ListMovies<Movies>>(){
+
             @Override
             public void onLoaded(ListMovies listMovies) {
                 mMoviesContractView.setLoading(false);
                 mMoviesContractView.showMovies(listMovies);
-
             }
         },popular);
 

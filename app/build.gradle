@@ -42,5 +42,11 @@ dependencies {
     // Image
     implementation "com.squareup.picasso:picasso:$picassoVersion"
 
+    // rxJava
+    implementation "io.reactivex:rxandroid:$rxandroid"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$Retrofit_version"
+
+    testImplementation "org.mockito:mockito-core:$mockito"
+
 
 }

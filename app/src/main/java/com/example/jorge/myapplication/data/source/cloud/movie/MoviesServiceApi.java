@@ -2,8 +2,6 @@ package com.example.jorge.myapplication.data.source.cloud.movie;
 
 import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
 
-import java.util.List;
-
 public interface MoviesServiceApi {
     /**
      * Interface for signature Cars Service Callback

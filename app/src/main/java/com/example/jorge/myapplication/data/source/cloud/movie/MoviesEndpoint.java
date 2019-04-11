@@ -5,9 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-import static com.example.jorge.myapplication.util.PathForApi.API_KEY;
-import static com.example.jorge.myapplication.util.PathForApi.MIDLLE_POPULAR;
-import static com.example.jorge.myapplication.util.PathForApi.MIDLLE_TOP_RATED;
+import static com.example.jorge.myapplication.util.PathForApi.*;
 
 public interface MoviesEndpoint {
 
@@ -22,4 +20,6 @@ public interface MoviesEndpoint {
      */
     @GET(MIDLLE_TOP_RATED + API_KEY)
     Call<ListMovies<Movies>> getMoviesTOP_RATED(@Query("page") String page);
+
+
 }

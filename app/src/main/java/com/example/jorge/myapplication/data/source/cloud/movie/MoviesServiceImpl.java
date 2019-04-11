@@ -5,8 +5,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.List;
-
 public class MoviesServiceImpl implements MoviesServiceApi {
 
     MoviesEndpoint mRetrofit;
@@ -37,6 +35,8 @@ public class MoviesServiceImpl implements MoviesServiceApi {
             public void onFailure(Call<ListMovies<Movies>> call, Throwable t) {
 
             }
+
+
         });
     }
 }

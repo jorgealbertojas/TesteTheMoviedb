@@ -7,7 +7,7 @@ import com.example.jorge.myapplication.data.source.cloud.movie.model.Movies;
 
 public class MoviesContract {
 
-    interface View extends BaseView<UserActionsListener> {
+    public interface View extends BaseView<UserActionsListener> {
 
         void setLoading(boolean isActive);
 
@@ -15,7 +15,7 @@ public class MoviesContract {
 
     }
 
-    interface UserActionsListener extends BasePresenter {
+    public interface UserActionsListener extends BasePresenter {
 
         void loadingMovies(Boolean popular);
 
