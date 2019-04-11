@@ -19,7 +19,7 @@ public class MoviesContract {
 
     interface UserActionsListener extends BasePresenter {
 
-        void loadingMovies();
+        void loadingMovies(Boolean popular);
 
 
     }

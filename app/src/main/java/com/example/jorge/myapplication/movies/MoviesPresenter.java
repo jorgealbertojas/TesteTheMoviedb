@@ -21,7 +21,7 @@ public class MoviesPresenter implements MoviesContract.UserActionsListener {
      * Loading the car call Service Api with data
      */
     @Override
-    public void loadingMovies() {
+    public void loadingMovies(Boolean popular) {
         mMoviesContractView.setLoading(true);
         mMoviesServiceApi.getMovies(new MoviesServiceApi.MoviesServiceCallback<ListMovies<Movies>>(){
             @Override
@@ -30,7 +30,7 @@ public class MoviesPresenter implements MoviesContract.UserActionsListener {
                 mMoviesContractView.showMovies(listMovies);
 
             }
-        });
+        },popular);
 
     }
 

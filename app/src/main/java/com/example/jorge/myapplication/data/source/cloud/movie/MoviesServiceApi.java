@@ -15,7 +15,7 @@ public interface MoviesServiceApi {
 
     }
 
-    void getMovies(MoviesServiceCallback<ListMovies<Movies>> callback);
+    void getMovies(MoviesServiceCallback<ListMovies<Movies>> callback, Boolean popular);
 
 }
 

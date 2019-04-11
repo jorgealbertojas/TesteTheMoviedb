@@ -17,8 +17,13 @@ public class MoviesServiceImpl implements MoviesServiceApi {
     }
 
     @Override
-    public void getMovies(final MoviesServiceCallback<ListMovies<Movies>> callback) {
-        Call<ListMovies<Movies>> callMovies = mRetrofit.getMoviesPOPULAR(Integer.toString(page++));
+    public void getMovies(final MoviesServiceCallback<ListMovies<Movies>> callback, Boolean popular) {
+        Call<ListMovies<Movies>> callMovies;
+        if (popular) {
+            callMovies = mRetrofit.getMoviesPOPULAR(Integer.toString(page++));
+        }else{
+            callMovies = mRetrofit.getMoviesTOP_RATED(Integer.toString(page++));
+        }
         callMovies.enqueue(new Callback<ListMovies<Movies>>() {
             @Override
             public void onResponse(Call<ListMovies<Movies>> call, Response<ListMovies<Movies>> response) {

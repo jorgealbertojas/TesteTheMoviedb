@@ -10,9 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.jorge.myapplication.R;
@@ -50,6 +48,8 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
 
     private ListMovies<Movies> mListMovies;
 
+    private static Boolean mPopular = false;
+
     /**
      * Constructor
      */
@@ -60,7 +60,8 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
      * Constructor with new Instance
      * @return
      */
-    public static MoviesFragment newInstance() {
+    public static MoviesFragment newInstance(boolean popular) {
+        mPopular = popular;
         return new MoviesFragment();
     }
 
@@ -72,7 +73,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
         if (savedInstanceState == null) {
             mListAdapter = new MoviesAdapter(new ListMovies<Movies>(), mItemListener);
             mActionsListener = new MoviesPresenter(new MoviesServiceImpl(), this);
-            mActionsListener.loadingMovies();
+            mActionsListener.loadingMovies(mPopular);
             mActionsListener.start();
         }
 
@@ -103,7 +104,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
             @Override
             public void onRefresh() {
 
-                mActionsListener.loadingMovies();
+                mActionsListener.loadingMovies(mPopular);
             }
         });
 
@@ -134,8 +135,6 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
         mRecyclerView= (RecyclerView) root.findViewById(R.id.rv_movies_list);
         mRecyclerView.setAdapter(mListAdapter);
 
-        int numColumns = 1;
-
         mRecyclerView.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -143,7 +142,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 mActionsListener = new MoviesPresenter(new MoviesServiceImpl(), mMoviesContract);
-                mActionsListener.loadingMovies();
+                mActionsListener.loadingMovies(mPopular);
                 mActionsListener.start();
 
             }
@@ -307,7 +306,7 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
     ItemListener mItemListener = new ItemListener() {
         @Override
         public void onMoviesClick(Movies clickedMovie) {
-            mActionsListener.loadingMovies();
+            mActionsListener.loadingMovies(mPopular);
         }
 
 
