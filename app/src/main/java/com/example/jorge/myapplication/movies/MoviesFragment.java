@@ -186,10 +186,6 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
         mListAdapter.replaceData(moviesList);
     }
 
-    @Override
-    public void showDetailMovies(Movies movies) {
-
-    }
 
     @Override
     public void setPresenter(MoviesContract.UserActionsListener presenter) {
@@ -234,7 +230,6 @@ public class MoviesFragment extends Fragment implements MoviesContract.View{
                     .resize(imageWight,imageDimension)
                     .onlyScaleDown()
                     .error(R.drawable.ic_error_black_24dp)
-                    .placeholder(R.mipmap.ic_launcher)
                     .into(viewHolder.moviesImage);
 
             viewHolder.title.setText(movies.getTitle());

@@ -21,6 +21,7 @@ public class MoviesActivity extends AppCompatActivity {
         if (null == savedInstanceState) {
             if (Common.isOnline(this)) {
                 initFragment(MoviesFragment.newInstance(true));
+                setTitle(getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.movie_popular));
             }
         }
     }
@@ -54,6 +55,7 @@ public class MoviesActivity extends AppCompatActivity {
         if (id == R.id.action_movie_popular) {
             if (Common.isOnline(this)) {
                 initFragment(MoviesFragment.newInstance(true));
+                setTitle(getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.movie_popular));
             }
             return true;
         }
@@ -61,6 +63,7 @@ public class MoviesActivity extends AppCompatActivity {
         if (id == R.id.action_movie_top) {
             if (Common.isOnline(this)) {
                 initFragment(MoviesFragment.newInstance(false));
+                setTitle(getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.movie_top));
             }
             return true;
         }

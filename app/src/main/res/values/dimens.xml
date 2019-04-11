@@ -1,7 +1,6 @@
 <resources>
 
     <!-- Android Design guidelines. List - Specs - Three line -->
-    <dimen name="card_height">88dp</dimen>
     <dimen name="image_margin_top_bottom">16dp</dimen>
     <dimen name="image_wight">100dp</dimen>
     <dimen name="text1_margin_left">16dp</dimen>
@@ -12,6 +11,10 @@
     <dimen name="text3_margin_end">16dp</dimen>
     <dimen name="text3_wight_height">24dp</dimen>
     <dimen name="text3_size">12dp</dimen>
+    <dimen name="card_height">88dp</dimen>
+    <dimen name="card_margin">2dp</dimen>
+    <dimen name="card_CornerRadius">5dp</dimen>
+    <dimen name="card_Elevation">4dp</dimen>
 
 
     <!-- Default screen margins, per the Android Design guidelines. -->
